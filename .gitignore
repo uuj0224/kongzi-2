@@ -1,0 +1,14 @@
+.venv/
+node_modules/
+frontend/dist/
+.env
+__pycache__/
+.pytest_cache/
+data/*.db*
+data/index.npz
+artifacts/
+data/models/
+.DS_Store
+.env.*
+!.env.example
+.impeccable/hook.cache.json

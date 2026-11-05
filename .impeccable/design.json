@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T14:24:06.936958+00:00",
+  "title": "Design System: 孔子问答",
+  "extensions": {
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "160ms ease-out",
+        "purpose": "Navigation, input-border and suggestion hover transitions."
+      },
+      {
+        "name": "thinking-pulse",
+        "value": "1.5s ease-in-out infinite",
+        "purpose": "Pending-answer feedback; disabled by reduced-motion preference."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "desktop-minimum",
+        "value": "1100px"
+      },
+      {
+        "name": "wide-exhibition",
+        "value": "1600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "description": "Question submission with Element Plus primary colors.",
+      "html": "<button class=\"ds-primary\">问一问</button>",
+      "css": ".ds-primary{background:var(--accent,#963f30);color:#fff;border:1px solid var(--accent,#963f30);border-radius:6px;height:36px;padding:0 16px;font:14px 'PingFang SC','Microsoft YaHei',system-ui,sans-serif;cursor:pointer}.ds-primary:hover{background:var(--el-color-primary-light-3,#ad675a);border-color:var(--el-color-primary-light-3,#ad675a)}.ds-primary:focus-visible{outline:2px solid var(--accent,#963f30);outline-offset:4px}",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Text Action",
+      "kind": "button",
+      "description": "Quiet links and contextual actions.",
+      "html": "<button class=\"ds-text\">查看出处</button>",
+      "css": ".ds-text{display:inline-flex;gap:7px;background:transparent;border:0;padding:5px 0;color:var(--accent,#963f30);font:12px 'PingFang SC','Microsoft YaHei',system-ui,sans-serif;cursor:pointer}.ds-text:hover{color:#773023;text-decoration:underline;text-underline-offset:4px}.ds-text:focus-visible{outline:2px solid var(--accent,#963f30);outline-offset:4px}",
+      "refersTo": "button-text"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "description": "Library original-text and interpretation search.",
+      "html": "<label class=\"ds-search\"><input aria-label=\"搜索原文或整理释义\" placeholder=\"搜索原文或整理释义\"></label>",
+      "css": ".ds-search{display:flex;align-items:center;gap:10px;padding:0 13px;height:40px;border:1px solid #bcc2af;border-radius:6px;background:var(--surface,#fff);color:var(--muted,#606b62)}.ds-search input{width:100%;min-width:0;background:transparent;border:0;outline:none;color:var(--ink,#24352d);font:13px 'PingFang SC','Microsoft YaHei',system-ui,sans-serif}.ds-search input::placeholder{color:var(--muted,#606b62);opacity:1}.ds-search:focus-within{border-color:var(--accent,#963f30);outline:2px solid var(--accent,#963f30);outline-offset:2px}",
+      "refersTo": "search"
+    },
+    {
+      "name": "Top Navigation",
+      "kind": "nav",
+      "description": "Primary destinations with the selected destination underlined.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"主导航\"><button class=\"ds-active\">问答书房</button><button>典籍文库</button></nav>",
+      "css": ".ds-nav{display:flex;gap:34px;height:88px}.ds-nav button{position:relative;background:transparent;border:0;padding:0;color:var(--muted,#606b62);font:14px 'PingFang SC','Microsoft YaHei',system-ui,sans-serif;cursor:pointer}.ds-nav button:hover{color:var(--ink,#24352d)}.ds-nav .ds-active{color:var(--ink,#24352d);font-weight:600}.ds-active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--accent,#963f30)}.ds-nav button:focus-visible{outline:2px solid var(--accent,#963f30);outline-offset:4px}"
+    },
+    {
+      "name": "Answer Status",
+      "kind": "chip",
+      "description": "Noninteractive evidence status beside the answer identity.",
+      "html": "<span class=\"ds-status\">依据文献整理</span>",
+      "css": ".ds-status{display:inline-block;font:11px 'PingFang SC','Microsoft YaHei',system-ui,sans-serif;color:var(--success,#526343);background:#e9ecdf;border-radius:4px;padding:4px 8px}",
+      "refersTo": "answer-status"
+    },
+    {
+      "name": "Interpretation Note",
+      "kind": "card",
+      "description": "Project-prepared interpretation accompanying original text.",
+      "html": "<div class=\"ds-note\"><b>项目整理释义</b><p>学习之后，结合思考理解原文。</p></div>",
+      "css": ".ds-note{font:13px/1.9 'PingFang SC','Microsoft YaHei',system-ui,sans-serif;color:#535d47;background:#eeefe5;padding:14px 16px;border-radius:4px}.ds-note b{font-size:11px;font-weight:600;color:#535f42}.ds-note p{margin:7px 0 0}"
+    }
+  ],
+  "narrative": {
+    "northStar": "现代东方文化展览",
+    "overview": "The confirmed visual world pairs a continuous ink-and-color handscroll with precise contemporary Chinese typography. Cool paper, green-black ink and a restrained cinnabar accent connect the exhibition entrance to the quieter reading surfaces.\n\nThe presentation is spacious at the entrance and denser around answers and source passages. Cultural character comes from the complete artwork and typography. The user explicitly rejected the former permanent application sidebar and isolated floating character portrait; the chapter directory remains a reading aid within the library. AI imagery and modern interpretations carry visible labels.",
+    "keyCharacteristics": [
+      "Complete artwork with an integrated question form.",
+      "Serif display and original passages; system sans for controls and answers.",
+      "Flat reading surfaces, thin dividers and restrained accent states.",
+      "Desktop layout with visible keyboard focus and reduced-motion support."
+    ],
+    "rules": [],
+    "dos": [
+      "**Do** use the effective exhibition palette and font stacks recorded in the frontmatter.",
+      "**Do** keep generated answers readable within the established answer measure and label original passages separately from project interpretation.",
+      "**Do** preserve keyboard focus and reduced-motion behavior.",
+      "**Do** identify AI-created artwork and the simulated character interpretation."
+    ],
+    "donts": [
+      "**Don't** restore the rejected permanent application sidebar or isolated floating portrait.",
+      "**Don't** let character artwork overlap reading text.",
+      "**Don't** treat the current desktop implementation as a mobile-responsive design.",
+      "**Don't** add a spacing, shadow or color scale that is absent from the source and describe it as an existing token."
+    ]
+  }
+}

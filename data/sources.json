@@ -1,0 +1,42 @@
+[
+  {
+    "file": "lunyu.json",
+    "repo": "chinese-poetry/chinese-poetry",
+    "commit": "b8594f81a89752241442f2ce267d6f66f96704ee",
+    "path": "论语/lunyu.json",
+    "url": "https://github.com/chinese-poetry/chinese-poetry/blob/b8594f81a89752241442f2ce267d6f66f96704ee/%E8%AE%BA%E8%AF%AD/lunyu.json",
+    "sha256": "bc336a3839706377892719db44c48a09794a493190535a42bf1c7d4c4233e96c"
+  },
+  {
+    "file": "LICENSE.chinese-poetry",
+    "repo": "chinese-poetry/chinese-poetry",
+    "commit": "b8594f81a89752241442f2ce267d6f66f96704ee",
+    "path": "LICENSE",
+    "url": "https://github.com/chinese-poetry/chinese-poetry/blob/b8594f81a89752241442f2ce267d6f66f96704ee/LICENSE",
+    "sha256": "c195319aeaa3ffcbe16aa5d26eec19eae5a42f84337dd2b3dc3c9d5ccbbd6507"
+  },
+  {
+    "file": "shiji.txt",
+    "repo": "garychowcmu/daizhigev20",
+    "commit": "4a6d6f2088825f132521d848c2ea86cf9c9a7620",
+    "path": "史藏/正史/史记.txt",
+    "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%8F%B2%E8%97%8F/%E6%AD%A3%E5%8F%B2/%E5%8F%B2%E8%AE%B0.txt",
+    "sha256": "5329b81243df51821f9bf15faacfce77bd5e697ee182c2cb92cb3396beb0b5b8"
+  },
+  {
+    "file": "liji.txt",
+    "repo": "garychowcmu/daizhigev20",
+    "commit": "4a6d6f2088825f132521d848c2ea86cf9c9a7620",
+    "path": "儒藏/礼经/礼记.txt",
+    "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%84%92%E8%97%8F/%E7%A4%BC%E7%BB%8F/%E7%A4%BC%E8%AE%B0.txt",
+    "sha256": "b4036a5deeefddf1cfa96c5c1770491aa25c050349e564d29d51e4655f8b8d99"
+  },
+  {
+    "file": "jiayu.txt",
+    "repo": "garychowcmu/daizhigev20",
+    "commit": "4a6d6f2088825f132521d848c2ea86cf9c9a7620",
+    "path": "儒藏/语录/孔子家语.txt",
+    "url": "https://github.com/garychowcmu/daizhigev20/blob/4a6d6f2088825f132521d848c2ea86cf9c9a7620/%E5%84%92%E8%97%8F/%E8%AF%AD%E5%BD%95/%E5%AD%94%E5%AD%90%E5%AE%B6%E8%AF%AD.txt",
+    "sha256": "82a5fc45f4f1297148e001a748b8349c0d8d88514c3373e11518acac2d8f5045"
+  }
+]
