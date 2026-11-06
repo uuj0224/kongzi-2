@@ -40,7 +40,7 @@ function preparePassage(p: Passage) {
 }
 let browseVersion = 0
 let copyVersion = 0
-const examples = ['学习与思考应该如何结合？', '孔子出生在哪里？字是什么？', '如何理解“己所不欲，勿施于人”？', '《礼记》如何看待教学相长？']
+const examples = ['夫子，弟子读书常感迷茫，该如何结合学习与思考？', '夫子，弟子与朋友意见不合，该如何相处？', '夫子，如何理解“己所不欲，勿施于人”？', '夫子，弟子想请教《礼记》中教学相长的道理。']
 const chapters = computed(() => books.value.find(b => b.name === activeBook.value)?.chapters || [])
 const filteredChapters = computed(() => chapters.value.filter(c => c.includes(chapterQuery.value.trim())))
 const filteredHistories = computed(() => histories.value.filter(h => [h.full_title || h.title, h.preview].join(' ').includes(historyQuery.value.trim())))
@@ -135,9 +135,9 @@ async function showSource(p: Passage) {
 }
 function answerBlocks(answer: string) {
   return answer.replace(/\r\n?/g, '\n')
-    .replace(/([。！？；])(?=(?:核心理解|原文依据|现代延伸解读|资料边界|需要注意)[：:，])/g, '$1\n')
+    .replace(/([。！？；])(?=(?:夫子答疑|核心理解|原文依据|现代延伸解读|资料边界|需要注意)[：:，])/g, '$1\n')
     .split(/\n+/).filter(text => text.trim()).map(text => {
-      const title = text.match(/^(?:#{1,3}\s*)?(核心理解|原文依据|现代延伸解读|资料边界|需要注意)(?:[：:，]\s*|\s*$)/)
+      const title = text.match(/^(?:#{1,3}\s*)?(夫子答疑|核心理解|原文依据|现代延伸解读|资料边界|需要注意)(?:[：:，]\s*|\s*$)/)
       return { title: title?.[1], text: title ? text.slice(title[0].length) : text }
     })
 }
@@ -175,7 +175,7 @@ onMounted(async () => {
       <section v-if="isLanding" class="landing" aria-label="问答书房首页">
         <div class="exhibition-hero">
           <img class="hero-art" src="/images/confucius-study.webp" width="1920" height="960" alt="孔子在书院展读竹简，远山与庭院相映的 AI 水墨设色画卷" fetchpriority="high">
-          <div class="hero-copy"><h1>有所问，<br><span>亦有所得。</span></h1><p class="intro">从一句古文，到一个生活中的困惑。<br>循着先贤的足迹，让经典回应当下。</p>
+          <div class="hero-copy"><h1>有所问，<br><span>亦有所得。</span></h1><p class="intro">以孔子弟子的身份，向先贤询问生活中的困惑</p>
 <QuestionComposer v-model="question" :busy="busy" :locked="historyBusy" :error="error" :notice="notice" @stop="stopWaiting" @clear-error="error = ''" @submit="send()" />
           </div>
         </div>
@@ -183,12 +183,12 @@ onMounted(async () => {
         <section class="discovery"><div class="discovery-heading"><h2>从一个问题，走近孔子。</h2><p>学习、交友、修身，与千年前的思想相遇。</p></div><div class="suggestions"><button v-for="q in examples" :key="q" @click="prepareQuestion(q)"><span>{{ q }}</span><Icon name="arrow" :size="18" /></button></div></section>
         <div class="collection-link"><p><span>典籍为据</span>《论语》<b>·</b>《史记》<b>·</b>《礼记》</p><button class="text-button" @click="showLibrary">展卷阅读<Icon name="arrow" :size="17" /></button></div>
       </section>
-      <section v-else-if="view === 'chat'" class="chat-page has-messages"><div class="conversation-title"><span>问答书房</span><span>AI 模拟解读 · 有据可循</span></div>
+      <section v-else-if="view === 'chat'" class="chat-page has-messages"><div class="conversation-title"><span>问答书房</span><span>以弟子之礼问学 · 孔子 AI 模拟</span></div>
         <div v-if="historyBusy" class="answer-skeleton" role="status" aria-label="正在读取会话"><span></span><span></span><span></span></div>
         <div v-else-if="messages.length || busy" class="thread" aria-live="polite">
           <article v-for="m in messages" :key="m.id" class="turn">
             <div class="question"><span class="question-mark">问</span><h2>{{ m.question }}</h2></div>
-            <div class="answer-label"><span class="scholar-avatar" aria-hidden="true"><img src="/images/confucius-portrait.webp" width="640" height="800" alt=""></span><span class="guide-identity">经典解读<small>孔子形象 · AI 模拟</small></span><span class="answer-state" :class="{ warning: m.status !== 'ok' }">{{ m.status === 'insufficient' ? '资料不足' : m.status === 'citation_warning' ? '引用待核验' : '依据文献整理' }}</span></div>
+            <div class="answer-label"><span class="scholar-avatar" aria-hidden="true"><img src="/images/confucius-portrait.webp" width="640" height="800" alt=""></span><span class="guide-identity">夫子答疑<small>孔子口吻 · AI 模拟</small></span><span class="answer-state" :class="{ warning: m.status !== 'ok' }">{{ m.status === 'insufficient' ? '资料不足' : m.status === 'citation_warning' ? '引用待核验' : '依据文献整理' }}</span></div>
             <div class="answer"><section v-for="(block, b) in answerBlocks(m.answer)" :key="b" class="answer-section"><h3 v-if="block.title">{{ block.title }}</h3><p v-if="block.text"><template v-for="(part, i) in answerParts(block.text, m)" :key="i"><button v-if="part.citation" class="inline-citation" :aria-label="'查看引用 ' + (m.citations.findIndex(p => p.id === part.citation?.id) + 1) + '：《' + part.citation.book + '》' + part.citation.chapter + '第' + part.citation.section + '段原文'" :title="'查看《' + part.citation.book + '》' + part.citation.chapter + '原文'" @click="showSource(part.citation)">{{ m.citations.findIndex(p => p.id === part.citation?.id) + 1 }}</button><template v-else>{{ part.text }}</template></template></p></section></div>
             <div v-if="m.citations.length" class="citations"><p class="source-heading"><Icon name="book" :size="16" />本次回答引用<span>{{ m.citations.length }} 条原文</span></p><button v-for="p in m.citations" :key="p.id" @click="showSource(p)"><span class="citation-title">{{ p.book }} · {{ p.chapter }} {{ p.section }}<small>{{ p.text.slice(0, 65) }}{{ p.text.length > 65 ? '…' : '' }}</small></span><span class="citation-kind">{{ p.kind }}<Icon name="external" :size="14" /></span></button></div>
             <details v-if="m.candidates?.length" class="candidates"><summary>查看检索候选原文<span>候选不代表已支持答案</span></summary><button v-for="p in m.candidates" :key="p.id" class="candidate" @click="showSource(p)"><span>{{ p.book }} · {{ p.chapter }} {{ p.section }}</span>{{ p.text.slice(0, 65) }}…</button></details>
